@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %} Sign in{% endblock title %}
+
+{% block body %}
+    <div class="container mt-5 ">
+        <h1 >Приветствую</h1>
+        <h2>Для начала работы авторизуйтесь</h2>
+        <form method="post" class="mt-4 col-4">
+            {% csrf_token %}
+            {{ form }}
+            <button type="submit" class="btn btn-success mt-3">Войти</button>
+            <a href="{% url 'sign_up' %}" role="button" class="btn btn-primary mt-3">Регистрация</a>
+        </form>
+    </div>
+{% endblock body %}

@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %} Todo List {% endblock title %}
+
+{% block content %}
+
+
+<!-- Button trigger modal -->
+
+
+    <div class="container">
+        <h1>Изменение записи</h1>
+
+        <!-- {% if success %}
+        <p style="color: red;">Запись добавлена</p>
+        {% endif %} -->
+        {% for todo in todo_list %}
+            <ul class="list-group mt-4">
+                <li class="list-group-item">
+                    {% if todo.pk == pk %}
+                    <div class="alert alert-primary" role="alert">
+                        <form action="" method="post">
+                            {% csrf_token %}
+                            {{ form }}
+                            <button type="submit" class="btn btn-success float-right mr-3 mt-1">Изменить</button>
+                            <a href="{% url 'index_page' %}" class="btn btn-secondary float-right mr-3 mt-1">Назад</a>
+                        </form>
+                    </div>   
+                    {% elif todo.complete %}
+                        <span><span class="badge badge-succes">+</span><del>{{ todo }}</del></span>
+                    {% else %}
+                        {{ todo }}
+                    {% endif %}
+                </li>
+            </ul>
+        {% endfor %}
+    </div>
+{% endblock content %}
